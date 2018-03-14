@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ziyue.xuetang.dao.test.TestDao">
+ 
+ 
+	<select id="getAcounts" resultType="map" >
+		select * 
+		from  t_user_accounts
+	</select>
+	
+	<select id="getUsers" resultType="map" parameterType="com.ziyue.xuetang.model.User">
+		select * 
+		from  t_user_accounts
+	</select>
+	
+	<insert id="insertt_common_boards">
+		insert t_common_boards(id) values(3);
+	</insert>
+	
+	<insert id="insertt_common_sections">
+		insert t_common_sections(id) values(3);
+	</insert>
+
+
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	default-lazy-init="false">
+
+
+
+	<!--任务
+	<bean id="luceneIndexJobTask" class="com.lami.kaipin.job.LuceneIndexJobTask" />
+
+ 
+	<bean id="doLuceneIndexJobTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+ 
+		<property name="targetObject">
+			<ref bean="luceneIndexJobTask" />
+		</property>
+ 
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+	</bean>
+
+
+ 
+	<bean id="luceneIndexJobTaskCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="doLuceneIndexJobTask" />
+		</property>
+		<property name="cronExpression">
+ 
+			<value>59 1 * * * ?</value>
+		 
+		</property>
+	</bean>
+
+ 
+	<bean name="luceneIndexJobTaskScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="luceneIndexJobTaskCronTrigger" />
+			</list>
+		</property>
+	</bean>
+
+ -->
+
+</beans>

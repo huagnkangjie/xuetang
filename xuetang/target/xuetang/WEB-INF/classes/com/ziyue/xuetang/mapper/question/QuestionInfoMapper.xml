@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziyue.xuetang.dao.question.QuestionInfoDao" >
+	<resultMap id="BaseResultMap" type="com.ziyue.xuetang.model.question.QuestionInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="board_id" property="boardId" jdbcType="INTEGER" />
+    <result column="tags" property="tags" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="on_stat" property="onStat" jdbcType="CHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="markdown_cont" property="markdownCont" jdbcType="VARCHAR" />
+    <result column="reward_count" property="rewardCount" jdbcType="INTEGER" />
+    <result column="answer_count" property="answerCount" jdbcType="INTEGER" />
+    <result column="someone_answer_count" property="someoneAnswerCount" jdbcType="INTEGER" />
+    <result column="pictures" property="pictures" jdbcType="VARCHAR" />
+    <result column="collection_count" property="collectionCount" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="CHAR" />
+    <result column="report_type" property="reportType" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="adopt_user_id" property="adoptUserId" jdbcType="INTEGER" />
+    <result column="adopt_answer_id" property="adoptAnswerId" jdbcType="INTEGER" />
+    <result column="frist_answer_time" property="fristAnswerTime" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, board_id, tags, type, on_stat, title, content, markdown_cont, reward_count, 
+    answer_count, someone_answer_count, pictures, collection_count, is_delete, report_type, 
+    status, adopt_user_id, adopt_answer_id, frist_answer_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_question_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_question_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.ziyue.xuetang.model.question.QuestionInfo" 
+  	useGeneratedKeys="true" keyProperty="id">
+    insert into t_question_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="boardId != null" >
+        board_id,
+      </if>
+      <if test="tags != null" >
+        tags,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="onStat != null" >
+        on_stat,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="markdownCont != null" >
+        markdown_cont,
+      </if>
+      <if test="rewardCount != null" >
+        reward_count,
+      </if>
+      <if test="answerCount != null" >
+        answer_count,
+      </if>
+      <if test="someoneAnswerCount != null" >
+        someone_answer_count,
+      </if>
+      <if test="pictures != null" >
+        pictures,
+      </if>
+      <if test="collectionCount != null" >
+        collection_count,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="reportType != null" >
+        report_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="adoptUserId != null" >
+        adopt_user_id,
+      </if>
+      <if test="adoptAnswerId != null" >
+        adopt_answer_id,
+      </if>
+      <if test="fristAnswerTime != null" >
+        frist_answer_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="boardId != null" >
+        #{boardId,jdbcType=INTEGER},
+      </if>
+      <if test="tags != null" >
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="onStat != null" >
+        #{onStat,jdbcType=CHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="markdownCont != null" >
+        #{markdownCont,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardCount != null" >
+        #{rewardCount,jdbcType=INTEGER},
+      </if>
+      <if test="answerCount != null" >
+        #{answerCount,jdbcType=INTEGER},
+      </if>
+      <if test="someoneAnswerCount != null" >
+        #{someoneAnswerCount,jdbcType=INTEGER},
+      </if>
+      <if test="pictures != null" >
+        #{pictures,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionCount != null" >
+        #{collectionCount,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="reportType != null" >
+        #{reportType,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="adoptUserId != null" >
+        #{adoptUserId,jdbcType=INTEGER},
+      </if>
+      <if test="adoptAnswerId != null" >
+        #{adoptAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="fristAnswerTime != null" >
+        #{fristAnswerTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziyue.xuetang.model.question.QuestionInfo" >
+    update t_question_info
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="boardId != null" >
+        board_id = #{boardId,jdbcType=INTEGER},
+      </if>
+      <if test="tags != null" >
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="onStat != null" >
+        on_stat = #{onStat,jdbcType=CHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="markdownCont != null" >
+        markdown_cont = #{markdownCont,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardCount != null" >
+        reward_count = #{rewardCount,jdbcType=INTEGER},
+      </if>
+      <if test="answerCount != null" >
+        answer_count = #{answerCount,jdbcType=INTEGER},
+      </if>
+      <if test="someoneAnswerCount != null" >
+        someone_answer_count = #{someoneAnswerCount,jdbcType=INTEGER},
+      </if>
+      <if test="pictures != null" >
+        pictures = #{pictures,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionCount != null" >
+        collection_count = #{collectionCount,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="reportType != null" >
+        report_type = #{reportType,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="adoptUserId != null" >
+        adopt_user_id = #{adoptUserId,jdbcType=INTEGER},
+      </if>
+      <if test="adoptAnswerId != null" >
+        adopt_answer_id = #{adoptAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="fristAnswerTime != null" >
+        frist_answer_time = #{fristAnswerTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  	
+ 	<!-- myself -->
+  
+	<!--   添加标签 tag -->
+  	<insert id="insertTag" useGeneratedKeys="true" keyColumn="id" parameterType="com.ziyue.xuetang.model.question.QuestionTags">
+  		INSERT INTO t_question_tags (
+			question_id,
+			tag_id
+		)
+		VALUES
+			(#{questionId}, #{tagId})
+  	</insert>
+  	
+  	
+	<!--   添加标签 shareUrl -->
+  	<insert id="inserShareUrl" useGeneratedKeys="true" keyColumn="id" parameterType="com.ziyue.xuetang.model.question.QuestionShare">
+  		INSERT INTO t_question_share (
+			question_id,
+			share_url,
+			auth_code
+		)
+		VALUES
+			(#{questionId}, #{shareUrl}, #{authCode})
+  	</insert>
+  	
+  	<select id="queryQuestionList" resultMap="BaseResultMap" parameterType="java.util.Map">
+  		select 
+	    <include refid="Base_Column_List" />
+	    from t_question_info
+	    where 1 =1 
+	    and is_delete = #{isDelete}
+	    <if test="query == 0">
+	    	ORDER BY reward_count DESC
+	    </if>
+	    <if test="query == 1">
+	    	and status = 0
+	    	ORDER BY create_time DESC
+	    </if>
+	    <if test="query == 2">
+	    	and status = 1
+	    	ORDER BY frist_answer_time DESC
+	    </if>
+	    <if test="query == 3">
+	    	ORDER BY create_time DESC
+	    </if>
+  	</select>
+  	
+  	
+  	<select id="queryQuestionShareList"
+  		resultType="com.ziyue.xuetang.model.question.QuestionShare"
+  	 	parameterType="java.lang.Integer">
+  		SELECT
+			id,
+			question_id questionId,
+			share_url shareUrl,
+			auth_code authCode
+		FROM
+			t_question_share
+		WHERE
+			question_id = #{questionId}
+  	
+  	</select>
+  	
+  	
+  	<select id="queryQuestionTagsList"
+  		resultType="com.ziyue.xuetang.model.question.QuestionTags"
+  	 	parameterType="java.lang.Integer">
+  		SELECT
+			t1.id,
+			t1.question_id questionId,
+			t1.tag_id tagId,
+			t2.`name` tagName
+		FROM
+			t_question_tags t1,
+			t_common_tags t2
+		WHERE
+			t1.tag_id = t2.id
+		AND t1.question_id = #{questionId}
+  	
+  	</select>
+  	
+  	<select id="querQuestionAnswerLevelOne" 
+  		resultType="java.util.Map"
+  	 	parameterType="java.util.Map">
+  	 	SELECT
+			t1.*,
+			t2.nike_name,
+			t2.head_url
+		FROM
+			t_question_answer t1
+		LEFT JOIN 
+			t_user_accounts t2
+		ON t1.user_id = t2.user_id
+		WHERE
+			question_id = #{questionId}
+		and (t1.fid is NULL or t1.fid = '')
+		and t1.is_delete = 0
+		<if test="questioner != null">
+			AND t1.user_id IN 
+			<foreach collection="questioner" index="index" item="item" open="(" separator="," close=")">
+               #{item}       
+       		</foreach>
+		</if>
+		<if test="userName != null">
+			and t2.nike_name = #{userName}
+		</if>
+		
+		ORDER BY t1.create_time DESC
+  	 	
+  	</select>
+  	
+  	<select id="querQuestionAnswerLevelTwo" 
+  		resultType="java.util.Map"
+  	 	parameterType="java.util.Map">
+  	 	select 
+  	 		t3.*, t4.nike_name toAnswer
+		from (SELECT
+			t1.*,
+			t2.nike_name
+		FROM
+			`t_question_answer` t1
+		LEFT JOIN 
+			t_user_accounts t2
+		ON t1.user_id = t2.user_id
+		WHERE
+			1 = 1
+		AND t1.question_id = #{questionId}
+		and t1.fid = #{fid}
+		AND (t1.fid IS NOT NULL OR t1.fid != '')
+		ORDER BY
+			t1.create_time DESC) t3
+		LEFT JOIN t_user_accounts t4
+		ON t3.to_user_id = t4.user_id
+  	 	
+  	</select>
+  	
+  	<insert id="insertQuestionAnswer" keyColumn="id" useGeneratedKeys="true"
+  		parameterType="com.ziyue.xuetang.model.question.QuestionAnswer" >
+	  	insert into t_question_answer
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	      <if test="id != null" >
+	        id,
+	      </if>
+	      <if test="questionId != null" >
+	        question_id,
+	      </if>
+	      <if test="userId != null" >
+	        user_id,
+	      </if>
+	      <if test="toUserId != null" >
+	        to_user_id,
+	      </if>
+	      <if test="content != null" >
+	        content,
+	      </if>
+	      <if test="markdownCont != null" >
+	        markdown_cont,
+	      </if>
+	      <if test="fid != null" >
+	        fid,
+	      </if>
+	      <if test="reportType != null" >
+	        report_type,
+	      </if>
+	      <if test="isDelete != null" >
+	        is_delete,
+	      </if>
+	      <if test="status != null" >
+	        status,
+	      </if>
+	      <if test="createTime != null" >
+	        create_time,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	      <if test="id != null" >
+	        #{id,jdbcType=INTEGER},
+	      </if>
+	      <if test="questionId != null" >
+	        #{questionId,jdbcType=INTEGER},
+	      </if>
+	      <if test="userId != null" >
+	        #{userId,jdbcType=INTEGER},
+	      </if>
+	      <if test="toUserId != null" >
+	        #{toUserId,jdbcType=INTEGER},
+	      </if>
+	      <if test="content != null" >
+	        #{content,jdbcType=VARCHAR},
+	      </if>
+	      <if test="markdownCont != null" >
+	        #{markdownCont,jdbcType=VARCHAR},
+	      </if>
+	      <if test="fid != null" >
+	        #{fid,jdbcType=INTEGER},
+	      </if>
+	      <if test="reportType != null" >
+	        #{reportType,jdbcType=CHAR},
+	      </if>
+	      <if test="isDelete != null" >
+	        #{isDelete,jdbcType=CHAR},
+	      </if>
+	      <if test="status != null" >
+	        #{status,jdbcType=CHAR},
+	      </if>
+	      <if test="createTime != null" >
+	        #{createTime,jdbcType=VARCHAR},
+	      </if>
+	    </trim>
+  	</insert>
+</mapper>

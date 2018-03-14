@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lami.kaipin.mapper.UserLocalAuthMapper">
+
+
+	<!-- 表名 -->
+	<sql id="table_name">
+		user_localauth
+	</sql>
+	<sql id="user_local_auth_column">
+		id, phone, email, password, encode_password,
+		is_active_phone,
+		is_active_email, salt,
+		category_id, invitation_code,
+		invitation_parent_code, open_id, reg_ip, create_time,
+		last_login_time,
+		is_del, enable
+	</sql>
+
+
+
+
+	<sql id="main_sql">
+		SELECT
+		*
+		FROM
+		<include refid="table_name" />
+		p
+	</sql>
+
+
+
+	<!-- 用户登录 (手机或邮箱均可登录) -->
+	<select id="userLogin" parameterType="string" resultType="map">
+		SELECT
+		*
+		FROM
+		<include refid="table_name" />
+
+		WHERE
+
+		is_del=0
+		and
+
+		(
+		phone=#{account}
+		OR
+		email=#{account}
+		)
+	</select>
+
+	<select id="selectByPhone" parameterType="string" resultType="map">
+		SELECT
+		*
+		FROM
+		<include refid="table_name" />
+
+		WHERE
+
+		phone=#{phone}
+
+	</select>
+
+
+	<!--查询邀请 -->
+	<select id="selectByInvitation" resultType="map" parameterType="string">
+
+
+		SELECT invitation_code,invitation_parent_code from
+
+		<include refid="table_name" />
+		where
+
+		invitation_code=#{invitation_code}
+
+
+	</select>
+
+
+	<!-- 根据id -->
+
+	<select id="selectById" resultType="map" parameterType="string">
+		SELECT
+		*
+
+		FROM
+		<include refid="table_name" />
+		where
+		id=#{id}
+
+	</select>
+
+	<select id="selectByOrganizationId" resultType="map"
+		parameterType="string">
+		SELECT
+		*
+
+		FROM
+		<include refid="table_name" />
+		where
+		organization_id=#{organization_id}
+
+	</select>
+
+	<select id="selectByEmail" resultType="map" parameterType="string">
+
+		SELECT
+		*
+		FROM
+		<include refid="table_name" />
+		where
+		email=#{email}
+
+	</select>
+
+
+
+
+
+	<!-- 注册用户 -->
+	<insert id="insertRegAccount" parameterType="map">
+		insert into
+		user_localauth
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="encode_password != null">
+				encode_password,
+			</if>
+ 
+			<if test="invitation_code != null">
+				invitation_code,
+			</if>
+			<if test="invitation_parent_code != null">
+				invitation_parent_code,
+			</if>
+			<if test="is_active_phone != null">
+				is_active_phone,
+			</if>
+			<if test="create_time != null">
+				create_time,
+			</if>
+		</trim>
+
+
+
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="phone != null">
+				#{phone},
+			</if>
+			<if test="password != null">
+				#{password},
+			</if>
+					<if test="encode_password != null">
+				#{encode_password},
+			</if>
+ 
+			
+			
+			<if test="invitation_code != null">
+				#{invitation_code},
+			</if>
+			<if test="invitation_parent_code != null">
+				#{invitation_parent_code},
+			</if>
+			<if test="is_active_phone != null">
+				#{is_active_phone},
+			</if>
+			<if test="create_time != null">
+				#{create_time},
+			</if>
+
+		</trim>
+
+
+
+	</insert>
+
+
+	<!-- 更新组织 -->
+
+	<update id="updateOrganizationId" parameterType="map">
+
+		update
+		<include refid="table_name" />
+		set organization_id=#{organization_id} where id=#{id}
+
+	</update>
+
+
+
+	<!-- 用法分类 -->
+
+	<update id="updateCategory" parameterType="map">
+		update
+		<include refid="table_name" />
+		set category_id =#{category_id} where
+		id=#{id}
+	</update>
+
+	<update id="updateForgetPassword" parameterType="map">
+		update
+		<include refid="table_name" />
+		set password =#{password} where
+		id=#{id}
+	</update>
+
+
+
+	<!-- 更新最后登陆时间 -->
+	<update id="updateLastLoginTime" parameterType="map">
+		update
+		<include refid="table_name" />
+		set last_login_time=#{last_login_time} where
+		id=#{id}
+	</update>
+
+	<update id="updateEmail" parameterType="map">
+		update
+		<include refid="table_name" />
+		set email =#{email} where
+		id=#{id}
+	</update>
+
+
+
+</mapper>

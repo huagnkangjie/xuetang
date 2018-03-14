@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lami.kaipin.mapper.UserOauthMapper">
+
+
+	<!-- 表名 -->
+	<sql id="table_name">
+		user_oauth
+	</sql>
+	<sql id="user_oauth_column">
+
+		id,
+		uid,
+		oauth_type,
+		oauth_id,
+		oauth_access_token,
+		oauth_expires
+	</sql>
+
+
+
+
+	<sql id="main_sql">
+		SELECT
+		<include refid="user_oauth_column" />
+		FROM
+		<include refid="table_name" />
+		p
+	</sql>
+
+
+	<select id="selectOauthByUid"  parameterType="string" resultType="map">
+	
+			SELECT
+	   *
+	   from
+	user_oauth  
+	 
+		where
+		  uid=#{uid}  
+	
+	</select>
+	<!-- open id登录 -->
+	<select id="loginOauthId"  parameterType="string" resultType="map">
+		SELECT
+	   *
+	   from
+	user_oauth  
+	 
+		where
+		  oauth_id=#{oauthId}  
+		
+	</select>
+
+
+ 
+	<insert id="insertOauth" parameterType="map">
+		insert into user_oauth (id, oauth_id, oauth_type,uid
+		)
+		values (#{id}, #{oauth_id},#{oauth_type},#{uid}
+		)
+	</insert>
+
+
+
+
+	<update id="updateOauthUid" parameterType="map">
+
+		update user_oauth
+		<set>
+			<if test="uid != null">
+				uid = #{uid}
+			</if>
+		</set>
+
+		where id = #{id}
+
+	</update>
+
+
+
+</mapper>

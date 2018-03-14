@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziyue.xuetang.dao.user.UserDao" >
+  <resultMap id="BaseResultMap" type="com.ziyue.xuetang.model.user.UserAccounts" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="nike_name" property="nikeName" jdbcType="VARCHAR" />
+    <result column="auth_code" property="authCode" jdbcType="VARCHAR" />
+    <result column="head_url" property="headUrl" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="fav_section_id" property="favSectionId" jdbcType="VARCHAR" />
+    <result column="contrbution" property="contrbution" jdbcType="VARCHAR" />
+    <result column="contr_quo" property="contrQuo" jdbcType="VARCHAR" />
+    <result column="wx" property="wx" jdbcType="VARCHAR" />
+    <result column="alipay" property="alipay" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="all_score" property="allScore" jdbcType="VARCHAR" />
+    <result column="usable_score" property="usableScore" jdbcType="VARCHAR" />
+    <result column="freeze_score" property="freezeScore" jdbcType="VARCHAR" />
+    <result column="reward_score" property="rewardScore" jdbcType="VARCHAR" />
+    <result column="pay_score" property="payScore" jdbcType="VARCHAR" />
+    <result column="withdrawals_score" property="withdrawalsScore" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, password, nike_name, auth_code, head_url, role, status, fav_section_id, 
+    contrbution, contr_quo, wx, alipay, phone, email, school, company, sex, all_score, 
+    usable_score, freeze_score, reward_score, pay_score, withdrawals_score, create_time, 
+    last_login_ip, last_login_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_accounts
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user_accounts
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.ziyue.xuetang.model.user.UserAccounts" >
+    insert into t_user_accounts
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="nikeName != null" >
+        nike_name,
+      </if>
+      <if test="authCode != null" >
+        auth_code,
+      </if>
+      <if test="headUrl != null" >
+        head_url,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="favSectionId != null" >
+        fav_section_id,
+      </if>
+      <if test="contrbution != null" >
+        contrbution,
+      </if>
+      <if test="contrQuo != null" >
+        contr_quo,
+      </if>
+      <if test="wx != null" >
+        wx,
+      </if>
+      <if test="alipay != null" >
+        alipay,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="allScore != null" >
+        all_score,
+      </if>
+      <if test="usableScore != null" >
+        usable_score,
+      </if>
+      <if test="freezeScore != null" >
+        freeze_score,
+      </if>
+      <if test="rewardScore != null" >
+        reward_score,
+      </if>
+      <if test="payScore != null" >
+        pay_score,
+      </if>
+      <if test="withdrawalsScore != null" >
+        withdrawals_score,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastLoginIp != null" >
+        last_login_ip,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nikeName != null" >
+        #{nikeName,jdbcType=VARCHAR},
+      </if>
+      <if test="authCode != null" >
+        #{authCode,jdbcType=VARCHAR},
+      </if>
+      <if test="headUrl != null" >
+        #{headUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="favSectionId != null" >
+        #{favSectionId,jdbcType=VARCHAR},
+      </if>
+      <if test="contrbution != null" >
+        #{contrbution,jdbcType=VARCHAR},
+      </if>
+      <if test="contrQuo != null" >
+        #{contrQuo,jdbcType=VARCHAR},
+      </if>
+      <if test="wx != null" >
+        #{wx,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay != null" >
+        #{alipay,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="allScore != null" >
+        #{allScore,jdbcType=VARCHAR},
+      </if>
+      <if test="usableScore != null" >
+        #{usableScore,jdbcType=VARCHAR},
+      </if>
+      <if test="freezeScore != null" >
+        #{freezeScore,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardScore != null" >
+        #{rewardScore,jdbcType=VARCHAR},
+      </if>
+      <if test="payScore != null" >
+        #{payScore,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawalsScore != null" >
+        #{withdrawalsScore,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziyue.xuetang.model.user.UserAccounts" >
+    update t_user_accounts
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nikeName != null" >
+        nike_name = #{nikeName,jdbcType=VARCHAR},
+      </if>
+      <if test="authCode != null" >
+        auth_code = #{authCode,jdbcType=VARCHAR},
+      </if>
+      <if test="headUrl != null" >
+        head_url = #{headUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="favSectionId != null" >
+        fav_section_id = #{favSectionId,jdbcType=VARCHAR},
+      </if>
+      <if test="contrbution != null" >
+        contrbution = #{contrbution,jdbcType=VARCHAR},
+      </if>
+      <if test="contrQuo != null" >
+        contr_quo = #{contrQuo,jdbcType=VARCHAR},
+      </if>
+      <if test="wx != null" >
+        wx = #{wx,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay != null" >
+        alipay = #{alipay,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="allScore != null" >
+        all_score = #{allScore,jdbcType=VARCHAR},
+      </if>
+      <if test="usableScore != null" >
+        usable_score = #{usableScore,jdbcType=VARCHAR},
+      </if>
+      <if test="freezeScore != null" >
+        freeze_score = #{freezeScore,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardScore != null" >
+        reward_score = #{rewardScore,jdbcType=VARCHAR},
+      </if>
+      <if test="payScore != null" >
+        pay_score = #{payScore,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawalsScore != null" >
+        withdrawals_score = #{withdrawalsScore,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+<!--  my -->
+	<select id="checkUserisRegister" resultType="map" parameterType="java.util.Map" >
+		select 
+			* 
+		from  
+			t_user_accounts 
+		where 1=1
+			and email = #{email}
+	</select>
+	
+	<select id="getMaxUserId" resultType="map" >
+		select MAX(user_id) maxId from t_user_accounts
+	</select>
+
+	<select id="selectUser" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select 
+	    <include refid="Base_Column_List" />
+	    from t_user_accounts
+	    where 1=1
+	    <if test="email != null">
+	    	and email = #{email}
+	    </if>
+	    <if test="password != null">
+	    	and password = #{password}
+	    </if>
+	    <if test="userId != null">
+	    	and user_id = #{userId}
+	    </if>
+	</select>
+	
+	<select id="getSelectList" resultType="map">
+		select  
+		 	id, title, content, rank, create_at createAt
+		FROM
+			t_common_sections
+		where
+			1 = 1
+		order by
+			rank asc
+	</select>
+	<select id="getBoradsList" resultType="map" parameterType="String">
+		SELECT
+			 id, section_id sectionId, title, content, rank, 
+			 pic_url picUrl, create_time createTime, 
+			 update_time updateTime
+		FROM
+			t_common_boards
+		WHERE
+			1 = 1
+		ORDER BY
+			rank ASC
+	</select>
+	<select id="getTagsList" resultType="map" parameterType="String">
+		SELECT
+			id, board_id boardId, rank, name, create_time createTime
+		FROM
+			t_common_tags
+		WHERE
+			1 = 1
+		AND board_id = #{broadsId}
+		ORDER BY
+			rank ASC
+	</select>
+	
+	<select id="getCollectionQuestion" resultType="com.ziyue.xuetang.model.user.UserCollectionsQuestion" 
+		parameterType="com.ziyue.xuetang.model.user.UserCollectionsQuestion">
+		SELECT
+			id,
+			question_id questionId,
+			user_id userId,
+			create_time createTime
+		FROM
+			t_user_collections_question
+		where 
+		question_id = #{questionId}
+		and user_id = #{userId}
+	
+	</select>
+	
+	<select id="isFriend" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+			*
+		FROM
+			t_user_apply
+		WHERE
+			(
+				req_user_id = #{req_user_id} AND res_user_id = #{res_user_id}
+			)
+		OR (
+			res_user_id = #{req_user_id} AND req_user_id = #{res_user_id}
+			)
+	</select>
+	
+
+</mapper>

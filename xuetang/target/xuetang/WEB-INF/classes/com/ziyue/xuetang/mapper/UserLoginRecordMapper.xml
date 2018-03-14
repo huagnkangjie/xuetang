@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lami.kaipin.mapper.UserLoginRecordMapper">
+
+
+
+	<select id="selectLoginRecord" parameterType="map" resultType="map">
+		SELECT
+		*
+		FROM
+
+		user_login_record
+		where
+		uid=#{uid} and login_type
+		=#{login_type}
+		and 
+		object_id=#{object_id}
+		order by create_time desc
+		limit 0,1
+
+	</select>
+	
+	
+		<select id="selectLoginRecordOld" parameterType="map" resultType="map">
+		SELECT
+		*
+		FROM
+
+		user_login_record
+		where
+		uid=#{uid}  
+		and 
+		(object_id=#{phone} or object_id=#{openid} )
+		and
+		login_type=#{login_type}
+		
+		
+		order by create_time desc
+		limit 0,1
+
+	</select>
+	
+	
+	
+
+	<update id="updateUserType" parameterType="map">
+
+		UPDATE
+		user_login_record
+		set
+		user_type = #{user_type}
+		where token=#{token}
+	</update>
+
+
+	<delete id="deleteToken" parameterType="string">
+		delete from user_login_record where token=#{token}
+
+	</delete>
+
+
+
+
+
+	<insert id="insertLoginRecord" parameterType="map">
+		insert into
+		user_login_record
+		( uid, login_type,
+		token,user_type,create_time,object_id)
+
+		values (
+		#{uid},#{login_type},
+		#{token},#{user_type},#{create_time},#{object_id}
+		)
+	</insert>
+
+
+
+
+
+
+
+
+</mapper>
